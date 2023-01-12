@@ -1,0 +1,174 @@
+<html>
+<head>
+  <title>n-queens problem solver</title>
+  </head>
+<body onload="makeBoard()" style="font-family: times new roman;">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            transition: all 0.3s ease-in;
+        }
+
+        #main {
+            width: 320px;
+            height: 320px;
+            font-family: courier;
+            font-size: 100.5%;
+            margin: 10px auto;
+            border: 1px;
+            text-align: left;
+            padding: 10px;
+        }
+
+        .cell {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 20px;
+            top: 40px;
+            border-width: 2px;
+            border-color: black;
+            background-color: #ddd;
+        }
+
+        span.queen {
+            position: absolute;
+            top: 60px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #eb0d1b;
+            font-size: 40px;
+            line-height: 40px;
+            text-align: center;
+            left: 40px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            z-index: 1;
+        }
+
+        .button {
+            margin: 5px auto;
+            padding: 15px;
+            color: white;
+            display: inline;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 800;
+            background: #397cf7;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 1s ease;
+        }
+
+        .button:hover {
+            border-radius: 5px;
+            background-color: #106ab9 !important;
+            color: white !important;
+        }
+
+        .play {
+            animation: shake 1s infinite alternate ease-in-out;
+        }
+
+        .reset {
+            display: none;
+        }
+
+        #log {
+            position: absolute;
+            left: 50%;
+            padding: 10px;
+            border: 1px solid red;
+            height: 400px;
+            width: 100%;
+            max-width: 512px;
+            opacity: 0;
+            overflow: scroll;
+            transform: translateX(-50%);
+        }
+
+        #status {
+            color: black;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #solved {
+            font-family: 'Righteous';
+            font-size: 72px;
+            line-height: 110px;
+            color: mediumseagreen;
+            display: none;
+            animation: color_change 0.3s infinite alternate;
+        }
+
+        @keyframes color_change {
+            from {
+                opacity: 0.8;
+                letter-spacing: 1px;
+                font-size: 73px;
+            }
+
+            to {
+                opacity: 1;
+                font-size: 72px;
+                letter-spacing: 0px;
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                margin-left: -10px;
+            }
+
+            5% {
+                margin-left: 0px;
+            }
+
+            10% {
+                margin-left: 10px;
+            }
+
+            11% {
+                margin-left: 0px;
+            }
+        }
+    </style>
+    <div id="main">
+
+    </div>
+    <div style="text-align: center; margin-top: 1em">
+        <span id="solved">Solved!</span>
+    </div>
+    <div style="width: 100%; text-align: center;">
+        <label for="speed" style="font-weight: bold;">Speed&nbsp;</label>
+        <select id="speed" onchange="changeSpeed()">
+            <option value="10">10ms</option>
+            <option value="100" selected>100ms</option>
+            <option value="500">0.5s</option>
+            <option value="1000">1s</option>
+        </select>
+    </div>
+    <div style="text-align: center; margin-top: 1em">
+        <button type="button" class="button play" onclick="play()">Play</button>
+        <button type="button" class="button reset" onclick="reset()">Reset</button>
+    </div>
+    <div id="log">
+        <h2 style="text-align: center; font-family: Righteaous;">Log</h2>
+        <hr style="color: lightgrey; border-top: 0.1px;" />
+        <ul id="log_entry" style="list-style: none">
+        </ul>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
